@@ -1,5 +1,3 @@
-document.getElementById('display').value = '';
-
 document.getElementById('display').addEventListener('keyup', (e) => {
     if (e.keyCode == 107 || e.keyCode == 106 || e.keyCode == 111 || e.keyCode == 109) {
         let value = document.getElementById('display').value;
@@ -11,11 +9,9 @@ document.getElementById('display').addEventListener('keyup', (e) => {
 })
 
 document.getElementById('delete-icon').addEventListener('click', e => {
-    let value = document.getElementById('display').value;
-    value = value.slice(0, value.length - 1);
-    document.getElementById('display').value = value;
-    audioSrc = 'Button-SoundBible.com-1420500901.mp3';
-    document.getElementById('audio').src = audioSrc;
+    const displayDelete = document.getElementById('display');
+    displayDelete.value = displayDelete.value.slice(0, displayDelete.value.length - 1);
+    document.getElementById('audio').src = 'Button-SoundBible.com-1420500901.mp3';
     document.getElementById('audio').play();
 })
 
@@ -32,57 +28,61 @@ document.querySelectorAll('.elements').forEach(element => {
 
         document.getElementById('audio').src = audioSrc;
         document.getElementById('audio').play();
-
-        
     })
-    element.addEventListener('mouseup', (e) => {
+
+    element.addEventListener('mouseup', () => {
         document.getElementById('audio').pause();
         document.getElementById('audio').currentTime = 0;
     })
 })
 
 function outputDisplay(itme) {
-    let value = document.getElementById('display').value;
+    const display = document.getElementById('display');
+    const txt = document.getElementById('txt');
+    const amal = document.getElementById('amal');
+
+    let value = display.value;
     const bool2 = itme == '*' || itme == '/' || itme == '+' || itme == '-';
-    const lable = document.getElementById('txt').innerText;
-    const amal = document.getElementById('amal').innerText;
+    const lable = txt.innerText;
+    const amalTxt = amal.innerText;
 
     if (itme == 'c') {
-        document.getElementById('display').value = '';
-        document.getElementById('txt').innerText = '';
-        document.getElementById('amal').innerText = '';
+        display.value = '';
+        txt.innerText = '';
+        amal.innerText = '';
         return;
     }
 
     if (itme == '=' && lable.length != 0 && value.length != 0) {
-        const result = calculator(lable, value, amal);
-        document.getElementById('txt').innerText = '';
-        document.getElementById('display').value = result;
-        document.getElementById('amal').innerText = '';
+        const result = calculator(lable, value, amalTxt);
+        txt.innerText = '';
+        display.value = result;
+        amal.innerText = '';
         return;
     }
 
     if (bool2 && lable.length != 0 && value.length != 0) {
-        const result = calculator(lable, value, amal)
-        document.getElementById('txt').innerText = result;
-        document.getElementById('display').value = '';
-        document.getElementById('amal').innerText = itme;
+        const result = calculator(lable, value, amalTxt)
+        txt.innerText = result;
+        display.value = '';
+        amal.innerText = itme;
         return;
     }
 
     if (bool2 && lable.length == 0 && value.length != 0) {
-        document.getElementById('txt').innerText = value;
-        document.getElementById('display').value = '';
-        document.getElementById('amal').innerText = itme;
+        txt.innerText = value;
+        display.value = '';
+        amal.innerText = itme;
+        return;
     }
 
     if (bool2 && lable.length != 0 && value.length == 0) {
-        document.getElementById('amal').innerText = itme;
+        amal.innerText = itme;
         return;
     }
 
     if (!bool2 && itme != '=')
-        return document.getElementById('display').value += itme;
+        return display.value += itme;
 
 }
 
