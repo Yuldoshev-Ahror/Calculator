@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <label id="txt"></label>
+        <label id="amal"></label>
+        <input id="display" type="text" value="">
+        <div id="box1">
+            <div class="elements" id="clear">c</div>
+            <div id="delete-icon"><i class="far fa-backspace"></i></div>
+            <div class="elements">/</div>
+        </div>
+
+        <div id="content">
+            <div id="box2">
+                <div class="elements">7</div>
+                <div class="elements">8</div>
+                <div class="elements">9</div>
+                <div class="elements">4</div>
+                <div class="elements">5</div>
+                <div class="elements">6</div>
+                <div class="elements">1</div>
+                <div class="elements">2</div>
+                <div class="elements">3</div>
+                <div class="elements">0</div>
+                <div class="elements">00</div>
+                <div class="elements">.</div>
+            </div>
+            <div id="box3">
+                <div class="elements">*</div>
+                <div class="elements">-</div>
+                <div class="elements">+</div>
+                <div class="elements" id="barabor">=</div>
+            </div>
+        </div>
+        <audio id="audio" controls></audio>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
